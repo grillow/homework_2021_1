@@ -53,4 +53,27 @@ QUnit.module('Тестируем функцию tree', function () {
 		assert.strictEqual(tree(8), expected);
 		assert.strictEqual(tree('8'), expected);
 	});
+
+    QUnit.test('Ёлочек высотой ниже нуля не бывает', function (assert) {
+        assert.strictEqual(tree(-1), null);
+        assert.strictEqual(tree(-2), null);
+        assert.strictEqual(tree('-1'), null);
+        assert.strictEqual(tree('-2'), null);
+    });
+
+    QUnit.test('Тип входных данных - только целое число или строка, содержащая целое число', function (assert) {
+        assert.strictEqual(tree(0 / 0), null);
+        assert.strictEqual(tree(Infinity), null);
+        assert.strictEqual(tree('not a number'), null);
+        assert.strictEqual(tree(Math.PI), null);
+        assert.strictEqual(tree(2.718281828), null);
+        assert.strictEqual(tree('2.718281828'), null);
+        assert.strictEqual(tree(function(){}), null);
+        assert.strictEqual(tree(new Object()), null);
+        assert.strictEqual(tree({}), null);
+        assert.strictEqual(tree(null), null);
+        assert.strictEqual(tree(undefined), null);
+    });
+    
 });
+
