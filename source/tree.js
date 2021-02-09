@@ -7,21 +7,22 @@
  */
 
 const tree = (height) => {
+    height = Number(height);
     if (!(typeof height != 'number' || typeof height != 'string')
         || !Number.isInteger(Number(height))
         || height < 3) {
         return null;
     }
 
-    let spruce = '';
-    for (let h = height; h != 1; --h) {
-        const spaces = ' '.repeat(h - 2);
-        spruce += `${spaces}${'*'.repeat(1 + (height - h) * 2)}${spaces}\n`;
-    }
-
-    const spaces = ' '.repeat(height - 2);
-    spruce += `${spaces}|${spaces}\n`;
-
-    return spruce;
+    return new Array(height).fill('').reduce((result, item, index) => {
+        if (index === height - 1) {
+            const spaces = ' '.repeat((2 * (height - 2)) / 2);
+            item = `${spaces}|${spaces}`;
+        } else {
+            const spaces = ' '.repeat(height - index - 2);
+            item = `${spaces}${'*'.repeat(1 + 2 * index)}${spaces}`;
+        }
+        return `${result}${item.toString()}\n`;
+    }, '');
 };
 
