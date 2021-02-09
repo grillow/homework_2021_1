@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * @description getting an ASCII tree
+ * @param {number} height - tree's height
+ * @return {string} ASCII tree consisting of symbols * and |
+ */
+
 const tree = (height) => {
     switch (typeof height) {
         case 'string':
