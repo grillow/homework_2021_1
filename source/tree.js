@@ -7,10 +7,13 @@
  */
 
 const tree = (height) => {
-    height = Number(height);
     if (!(typeof height != 'number' || typeof height != 'string')
         || !Number.isInteger(Number(height))
-        || height < 3) {
+        || height === null) {
+        throw TypeError('Incorrect height type');
+    }
+    height = Number(height);
+    if (height < 3) {
         return null;
     }
 
@@ -20,9 +23,10 @@ const tree = (height) => {
             item = `${spaces}|${spaces}`;
         } else {
             const spaces = ' '.repeat(height - index - 2);
-            item = `${spaces}${'*'.repeat(1 + 2 * index)}${spaces}`;
+            const stars = '*'.repeat(1 + 2 * index);
+            item = `${spaces}${stars}${spaces}`;
         }
-        return `${result}${item.toString()}\n`;
+        return `${result}${item}\n`;
     }, '');
 };
 

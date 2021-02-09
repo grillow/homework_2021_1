@@ -62,17 +62,16 @@ QUnit.module('Тестируем функцию tree', function () {
     });
 
     QUnit.test('Тип входных данных - только целое число или строка, содержащая целое число', function (assert) {
-        assert.strictEqual(tree(0 / 0), null);
-        assert.strictEqual(tree(Infinity), null);
-        assert.strictEqual(tree('not a number'), null);
-        assert.strictEqual(tree(Math.PI), null);
-        assert.strictEqual(tree(2.718281828), null);
-        assert.strictEqual(tree('2.718281828'), null);
-        assert.strictEqual(tree(function(){}), null);
-        assert.strictEqual(tree(new Object()), null);
-        assert.strictEqual(tree({}), null);
-        assert.strictEqual(tree(null), null);
-        assert.strictEqual(tree(undefined), null);
+        assert.throws(() => {tree(0 / 0)}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(Infinity)}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree('not a number')}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(Math.PI)}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(2.718281828)}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(function(){})}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(new Object())}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree({})}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(null)}, TypeError('Incorrect height type'));
+        assert.throws(() => {tree(undefined)}, TypeError('Incorrect height type'));
     });
     
 });
