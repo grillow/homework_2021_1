@@ -20,12 +20,11 @@ const tree = (height) => {
     let spruce = '';
     for (let h = height; h != 1; --h) {
         const spaces = ' '.repeat(h - 2);
-        const stars = '*'.repeat(1 + (height - h) * 2);
-        spruce += spaces + stars + spaces + '\n';
+        spruce += `${spaces}${'*'.repeat(1 + (height - h) * 2)}${spaces}\n`;
     }
 
     const spaces = ' '.repeat(height - 2);
-    spruce += spaces + '|' + spaces + '\n';
+    spruce += `${spaces}|${spaces}\n`;
 
     return spruce;
 
