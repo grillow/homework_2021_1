@@ -7,19 +7,9 @@
  */
 
 const tree = (height) => {
-    switch (typeof height) {
-        case 'string':
-            height = parseInt(height);
-        case 'number':
-            if (!Number.isInteger(height)) {
-                return null;
-            }
-            break;
-        default:
-            return null;
-    }
-
-    if (height < 3) {
+    if (!(typeof height != 'number' || typeof height != 'string')
+        || !Number.isInteger(Number(height))
+        || height < 3) {
         return null;
     }
 
@@ -33,6 +23,5 @@ const tree = (height) => {
     spruce += `${spaces}|${spaces}\n`;
 
     return spruce;
-
 };
 
