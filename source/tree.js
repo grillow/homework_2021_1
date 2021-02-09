@@ -2,7 +2,7 @@
 
 /**
  * @description getting an ASCII tree
- * @param {number} height - tree's height
+ * @param {number|string} height - tree's height
  * @return {string} ASCII tree consisting of symbols * and |
  */
 
@@ -12,7 +12,9 @@ const tree = (height) => {
         || height === null) {
         throw TypeError('Incorrect height type');
     }
+    
     height = Number(height);
+    
     if (height < 3) {
         return null;
     }
